@@ -1,0 +1,9 @@
+.add-btn {
+  height: 60px;
+  cursor: pointer;
+  margin-right: 43px;
+}
+button {
+  background: transparent;
+  border: none;
+}

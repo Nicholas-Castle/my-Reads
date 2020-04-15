@@ -1,17 +1,18 @@
 import React from 'react';
+import Header from './Components/Header/Header';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>Hello</p>
+      <header>
+        <Header />
       </header>
-      <body className="App-body">
+      <div className="App-body">
         <h1>Want to Read</h1>
         <h1>Reading</h1>
         <h1>Read</h1>
-      </body>
+      </div>
     </div>
   );
 }

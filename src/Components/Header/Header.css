@@ -1,0 +1,24 @@
+.Header-container{
+  background-color: #0F4C81;
+  min-height: 90px;
+  max-height: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.logo-lockup {
+  display: flex;
+  height: 58px;
+  width: 30%;
+}
+
+h1.title {
+  font-size: 21px;
+  margin: 16px 0px 17px -38px;
+}
+img {
+  margin-left: 8px;
+}
