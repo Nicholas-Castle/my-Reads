@@ -8,7 +8,7 @@ const Header = (props) => {
   return (
     <div className="Header-container">
       <div className="logo-lockup">
-        <img src={Logo} alt='Logo' />
+        <img className='logo' src={Logo} alt='Logo' />
         <h1 className='title'>My Reads</h1>
         
       </div>

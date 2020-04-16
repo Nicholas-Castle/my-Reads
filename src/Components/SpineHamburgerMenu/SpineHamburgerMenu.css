@@ -1,0 +1,16 @@
+.menuLine {
+  border-radius: 4px 4px 4px 4px;
+  background: black;
+  height: 3px;
+  width: 38px;
+  margin: 0px 0px 3px 0px;
+  cursor: pointer;
+  display: flex;
+}
+.Card-menu-container {
+  cursor: pointer;
+}
+button.Card-menu {
+  padding: 13px 0 20px 0px;
+  cursor: pointer;
+}
