@@ -7,15 +7,7 @@
   float: left;
    
 }
-.Card-container-back-show {
-  height: 369px;
-    width: 273px;
-    box-shadow: 1px 1px 6px 1px rgba(0,0,0,0.31);
-    margin: 0px -26px 4px -273px;
-    display: flex;
-    /*  */
-   
-}
+
 .Fly-out {
   height: 369px;
     width: 221%;
@@ -33,17 +25,7 @@
   letter-spacing: 0.01em;
   cursor: default;
 }
-img.Book-back-img:after {
-  content: "";
-  display: block;
-  position: fixed; 
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 10;
-  background-color: rgba(0,0,0,0.1);
-  }
+
 img.Book-back-img {
   left: -1px;
   height: 370px;
@@ -58,7 +40,7 @@ h3.list-heading {
   margin: 8px 60px 0 0px;
 }
 .List-content-wrapper {
-  margin: 33px 0px 0 22px;
+  margin: 38px 0px 0 -8px;
 }
 
 .checkbox-label {

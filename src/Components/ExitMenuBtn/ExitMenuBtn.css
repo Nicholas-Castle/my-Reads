@@ -4,11 +4,10 @@ img.exit-btn {
   cursor: pointer;
 }
 .exit-btn-container {
-  height: 24;
   width: 0px;
   display: flex;
   flex-direction: column;
   position: absolute;
   z-index: 1;
-  margin: 10px 0 0 162px;
+  margin: 10px 0 0 13px;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import FrontBookCard from "../BookCardFront/FrontBookCard";
-import BackBookCard from "../BookCardBack/BackBookCard";
+
 import "./Read.css";
 
 const Read = (props) => {
@@ -9,7 +9,6 @@ const Read = (props) => {
       <h1 className='heading'>Read</h1>
       <div className="Read-container">
         <FrontBookCard />
-        <BackBookCard />
       </div>
     </div>
   );

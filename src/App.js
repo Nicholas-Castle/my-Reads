@@ -9,32 +9,58 @@ import "./App.css";
 class App extends Component {
   state = {
     books: [],
+    isLoaded: false,
+    error: null,
   };
 
   componentDidMount() {
-    API.getAll().then((books) =>
-      this.setState({
-        books,
-      })
+    console.log();
+    API.getAll().then(
+      (result) => {
+        this.setState({
+          books: result,
+          isLoaded: true,
+        });
+      },
+      (error) => {
+        this.setState({
+          isLoaded: false,
+          error,
+        });
+      }
     );
   }
 
+  getBooks = () => {
+    return this.state.books;
+  };
+
   render() {
-    return (
-      <div className="App">
-        <header>
-          <Header />
-        </header>
-        <div className="App-body">
+    const { books, error, isLoaded } = this.state;
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return null;
+    } else {
+      return (
+        <div className="App">
+          <header>
+            <Header />
+          </header>
+          <div className="App-body">
+            <div>
+              <WantToRead books={books} />
+            </div>
+            <div>
+            <WantToRead books={books} />
+          </div>
           <div>
-          {console.log(this.state.books)}
-          <WantToRead books={this.state.books}/>
-          <Reading />
-          <Read />
+          <WantToRead books={books} />
+        </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 

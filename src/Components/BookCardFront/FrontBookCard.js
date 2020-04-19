@@ -9,51 +9,38 @@ class FrontBookCard extends Component {
   };
 
   exitListMenuHandler = () => {
-    console.log(this.state.toggleMenu);
-    this.setState((prevState) => {
-      return { toggleMenu: (prevState.toggleMenu = false) };
-    });
-    console.log(this.state.toggleMenu);
+    this.setState({ toggleMenu: false });
   };
 
   hamburgerMenuBtn = () => {
-    this.setState((prevState) => {
-      return { toggleMenu: (prevState.toggleMenu = true) };
-    });
-    console.log(this.state.toggleMenu);
+    this.setState({ toggleMenu: true });
   };
 
   render() {
+    const { title, img } = this.props;
     return (
       <div>
-        {this.props.books &&
-          this.props.books.map((book) => (
+        <div className="Card-container-front">
+          {this.state.toggleMenu === false ? (
             <div className="Card-container-front">
-              {this.state.toggleMenu === false ? (
-                <React.Fragment>
-                  <div className="Card-container-front">
-                    <div className="Spine">
-                      <SpineHamburgerMenu
-                        hamburgerMenuBtn={this.hamburgerMenuBtn}
-                      />
-                      <p className="Book-title">{book.title}</p>
-                    </div>
-                    <div className="Book-Image_Container">
-                      <img
-                        className="Book-front-img"
-                        src={book.imageLinks.thumbnail}
-                        alt="Logo"
-                      />
-                    </div>
-                  </div>
-                </React.Fragment>
-              ) : (
-                <React.Fragment>
-                  <BackBookCard exitMenu={this.exitListMenuHandler} />
-                </React.Fragment>
-              )}
+              <div className="Spine">
+                <SpineHamburgerMenu hamburgerMenuBtn={this.hamburgerMenuBtn} />
+                <p className="Book-title">{title}</p>
+              </div>
+              <div className="Book-Image_Container">
+                <img className="Book-front-img" src={img} alt="Logo" />
+              </div>
             </div>
-          ))}
+          ) : (
+            <React.Fragment>
+              <BackBookCard
+                bookTitle={title}
+                bookImage={img}
+                exitListMenuHandler={this.exitListMenuHandler}
+              />
+            </React.Fragment>
+          )}
+        </div>
       </div>
     );
   }
