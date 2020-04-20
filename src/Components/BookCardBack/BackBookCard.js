@@ -1,43 +1,86 @@
-import React from "react";
+import React, { Component } from "react";
 import "./BackBookCard.css";
 import ExitMenuBtn from "./../ExitMenuBtn/ExitMenuBtn";
+import * as API from "./../../util/BooksAPI";
 
-const BackBookCard = (props) => {
+class BackBookCard extends Component {
+  state = {
+    bookStatus: ''
+  }
+
+  handleRadioChange = (event) => {
+    this.setState({
+      bookStatus: event.target.value
+    });
+  }
+
+  componentWillUnmount() {
+    const shelf = this.state.bookStatus
+    API.update(this.props.book, shelf)
+}
+
+render() {
   return (
     <div>
       <div className="Card-container-back">
-        <ExitMenuBtn exitMenu={props.exitListMenuHandler} />
+        <ExitMenuBtn exitMenu={this.props.exitListMenuHandler} />
         <div className="Fly-out">
           <div className="List-content-wrapper">
             <p className="Book-title-back">
-              {props.bookTitle.length > 14
-                ? props.bookTitle.slice(0, 10) + "..."
-                : props.bookTitle}
+              {this.props.bookTitle.length > 14
+                ? this.props.bookTitle.slice(0, 10) + "..."
+                : this.props.bookTitle}
             </p>
             <h3 className="list-heading">Move to...</h3>
             <br />
           </div>
           <form>
             <label className="checkbox-label">
-              <input name="radio" type="radio" value="Read"></input>
+              <input 
+                name="radio" 
+                type="radio" 
+                value="read"
+                defaultChecked={this.props.shelf  === 'read'} 
+                onChange={this.handleRadioChange}
+                >
+                </input>
               <span className="checkbox-custom"></span>
               Read
             </label>
             <br />
             <label className="checkbox-label">
-              <input name="radio" type="radio" value="Reading"></input>
+              <input 
+                name="radio" 
+                type="radio" 
+                value="currentlyReading"
+                defaultChecked={this.props.shelf === 'currentlyReading'} 
+                onChange={this.handleRadioChange}
+                ></input>
               <span className="checkbox-custom"></span>
               Reading
             </label>
             <br />
             <label className="checkbox-label">
-              <input name="radio" type="radio" value="Want-to-Read"></input>
+              <input 
+                name="radio" 
+                type="radio" 
+                value="wantToRead" 
+                defaultChecked={this.props.shelf === 'wantToRead' } 
+                onChange={this.handleRadioChange}
+              >
+              </input>
               <span className="checkbox-custom"></span>
               Want to Read
             </label>
             <br />
             <label className="checkbox-label">
-              <input name="radio" type="radio" value="None"></input>
+              <input 
+                name="radio" type="radio" 
+                value="none"
+                defaultChecked={this.props.shelf === 'none'} 
+                onChange={this.handleRadioChange}
+                >
+                </input>
               <span className="checkbox-custom"></span>
               None
             </label>
@@ -45,12 +88,13 @@ const BackBookCard = (props) => {
         </div>
         <div className="Book-Image_Container">
           <div className="FlexContainer">
-            <img className="Book-back-img" src={props.bookImage} alt="Logo" />
+            <img className="Book-back-img" src={this.props.bookImage} alt="Logo" />
           </div>
         </div>
       </div>
     </div>
   );
+              }
 };
 
 export default BackBookCard;

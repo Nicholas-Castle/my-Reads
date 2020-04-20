@@ -49,6 +49,7 @@ class App extends Component {
           </header>
           <div className="App-body">
             <div>
+            {console.log(books)}
               <WantToRead books={books} />
             </div>
             <div>

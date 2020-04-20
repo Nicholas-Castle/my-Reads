@@ -3,10 +3,13 @@ import "./FrontBookCard.css";
 import BackBookCard from "../BookCardBack/BackBookCard";
 import SpineHamburgerMenu from "../SpineHamburgerMenu/SpineHamburgerMenu";
 
+
+
 class FrontBookCard extends Component {
   state = {
     toggleMenu: false,
   };
+
 
   exitListMenuHandler = () => {
     this.setState({ toggleMenu: false });
@@ -17,7 +20,7 @@ class FrontBookCard extends Component {
   };
 
   render() {
-    const { title, img } = this.props;
+    const { title, img, shelf } = this.props;
     return (
       <div>
         <div className="Card-container-front">
@@ -37,6 +40,8 @@ class FrontBookCard extends Component {
                 bookTitle={title}
                 bookImage={img}
                 exitListMenuHandler={this.exitListMenuHandler}
+                shelf={shelf}
+                book={this.props}
               />
             </React.Fragment>
           )}
