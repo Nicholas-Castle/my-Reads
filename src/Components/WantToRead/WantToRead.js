@@ -12,7 +12,8 @@ const WantToRead = (props) => {
             <FrontBookCard 
               title={book.title} 
               img={book.imageLinks.thumbnail} 
-              shelf={book.shelf} />
+              shelf={book.shelf}
+              book={book} />
           </React.Fragment>
         ))}
       </div>

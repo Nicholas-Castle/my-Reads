@@ -10,7 +10,7 @@ class FrontBookCard extends Component {
     toggleMenu: false,
   };
 
-
+ 
   exitListMenuHandler = () => {
     this.setState({ toggleMenu: false });
   };
@@ -20,9 +20,11 @@ class FrontBookCard extends Component {
   };
 
   render() {
-    const { title, img, shelf } = this.props;
+    const { title, img, shelf} = this.props;
+    
     return (
       <div>
+
         <div className="Card-container-front">
           {this.state.toggleMenu === false ? (
             <div className="Card-container-front">
@@ -41,7 +43,7 @@ class FrontBookCard extends Component {
                 bookImage={img}
                 exitListMenuHandler={this.exitListMenuHandler}
                 shelf={shelf}
-                book={this.props}
+                book={this.props.book}
               />
             </React.Fragment>
           )}

@@ -11,13 +11,13 @@ class BackBookCard extends Component {
   handleRadioChange = (event) => {
     this.setState({
       bookStatus: event.target.value
-    });
-  }
-
-  componentWillUnmount() {
+    })
     const shelf = this.state.bookStatus
+    console.log(this.props.book)
     API.update(this.props.book, shelf)
-}
+    .catch(err => console.warn(err))
+  }
+  
 
 render() {
   return (

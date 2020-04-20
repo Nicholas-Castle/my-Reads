@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import Header from "./Components/Header/Header";
 import WantToRead from "./Components/WantToRead/WantToRead";
-import Reading from "./Components/Reading/Reading";
-import Read from "./Components/Read/Read";
 import * as API from "./util/BooksAPI";
 import "./App.css";
 
@@ -49,7 +47,6 @@ class App extends Component {
           </header>
           <div className="App-body">
             <div>
-            {console.log(books)}
               <WantToRead books={books} />
             </div>
             <div>
