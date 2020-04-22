@@ -3,28 +3,29 @@ import "./FrontBookCard.css";
 import BackBookCard from "../BookCardBack/BackBookCard";
 import SpineHamburgerMenu from "../SpineHamburgerMenu/SpineHamburgerMenu";
 
-
-
 class FrontBookCard extends Component {
   state = {
     toggleMenu: false,
   };
 
- 
-  exitListMenuHandler = () => {
-    this.setState({ toggleMenu: false });
+  exitListMenuHandler = (e) => {
+    e.preventDefault();
+    this.setState((state) => {
+      return { toggleMenu: (state.toggleMenu = false) };
+    });
   };
 
-  hamburgerMenuBtn = () => {
-    this.setState({ toggleMenu: true });
+  hamburgerMenuBtn = (e) => {
+    e.preventDefault();
+    this.setState((state) => {
+      return { toggleMenu: (state.toggleMenu = true) };
+    });
   };
 
   render() {
-    const { title, img, shelf} = this.props;
-    
+    const { title, img, shelf } = this.props;
     return (
       <div>
-
         <div className="Card-container-front">
           {this.state.toggleMenu === false ? (
             <div className="Card-container-front">
@@ -44,6 +45,7 @@ class FrontBookCard extends Component {
                 exitListMenuHandler={this.exitListMenuHandler}
                 shelf={shelf}
                 book={this.props.book}
+                books={this.props}
               />
             </React.Fragment>
           )}

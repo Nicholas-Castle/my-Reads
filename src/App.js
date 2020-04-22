@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Header from "./Components/Header/Header";
 import WantToRead from "./Components/WantToRead/WantToRead";
+import Reading from "./Components/Reading/Reading";
+import Read from "./Components/Read/Read";
 import * as API from "./util/BooksAPI";
 import "./App.css";
 
@@ -12,12 +14,13 @@ class App extends Component {
   };
 
   componentDidMount() {
-    console.log();
     API.getAll().then(
       (result) => {
-        this.setState({
-          books: result,
-          isLoaded: true,
+        this.setState((state) => {
+          return {
+            books: (state.books = result),
+            isLoaded: true,
+          };
         });
       },
       (error) => {
@@ -29,9 +32,16 @@ class App extends Component {
     );
   }
 
-  getBooks = () => {
-    return this.state.books;
-  };
+  componentDidUpdate() {
+    API.getAll().then((result) => {
+      this.setState((prevState) => {
+        return {
+          books: (prevState.books = result),
+          isLoaded: true,
+        };
+      });
+    });
+  }
 
   render() {
     const { books, error, isLoaded } = this.state;
@@ -50,11 +60,11 @@ class App extends Component {
               <WantToRead books={books} />
             </div>
             <div>
-            <WantToRead books={books} />
-          </div>
-          <div>
-          <WantToRead books={books} />
-        </div>
+              <Reading books={books} />
+            </div>
+            <div>
+              <Read books={books} />
+            </div>
           </div>
         </div>
       );
