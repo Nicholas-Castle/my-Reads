@@ -1,0 +1,24 @@
+.Search-container {
+  background-color: #fff;
+  min-height: 90px;
+  max-height: 200px;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #dcdcdc;
+}
+.card-list {
+  width: 66vw;
+  margin: 100px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+
+input[type="search"] {
+  /* border: none; */
+  height: 89px;
+  width: 83%;
+}

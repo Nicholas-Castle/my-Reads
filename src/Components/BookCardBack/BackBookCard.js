@@ -9,23 +9,22 @@ class BackBookCard extends Component {
   };
 
   handleRadioChange = (e) => {
-    console.log(e.target.value);
-    this.setState({
-      bookStatus: e.target.value,
-    });
+    this.setState(
+      {
+        bookStatus: e.target.value,
+      },
+      this.updateShelf
+    );
   };
 
-  update = () => {
+  updateShelf = () => {
     const shelf = this.state.bookStatus;
-    API.update(this.props.book, shelf).catch((err) => console.warn(err));
+    API.update(this.props.book, shelf);
+    
   };
-
-  componentDidUpdate() {
-    this.update();
-    console.log(this.state);
-  }
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <div className="Card-container-back">
@@ -33,9 +32,9 @@ class BackBookCard extends Component {
           <div className="Fly-out">
             <div className="List-content-wrapper">
               <p className="Book-title-back">
-                {this.props.bookTitle.length > 14
-                  ? this.props.bookTitle.slice(0, 10) + "..."
-                  : this.props.bookTitle}
+                {this.props.book.title.length > 14
+                  ? this.props.book.title.slice(0, 10) + "..."
+                  : this.props.book.title}
               </p>
               <h3 className="list-heading">Move to...</h3>
               <br />
@@ -46,7 +45,7 @@ class BackBookCard extends Component {
                   name="radio"
                   type="radio"
                   value="read"
-                  defaultChecked={this.props.shelf === "read"}
+                  defaultChecked={this.props.book.shelf === "read"}
                   onChange={this.handleRadioChange}
                 ></input>
                 <span className="checkbox-custom"></span>
@@ -58,7 +57,7 @@ class BackBookCard extends Component {
                   name="radio"
                   type="radio"
                   value="currentlyReading"
-                  defaultChecked={this.props.shelf === "currentlyReading"}
+                  defaultChecked={this.props.book.shelf === "currentlyReading"}
                   onChange={this.handleRadioChange}
                 ></input>
                 <span className="checkbox-custom"></span>
@@ -70,7 +69,7 @@ class BackBookCard extends Component {
                   name="radio"
                   type="radio"
                   value="wantToRead"
-                  defaultChecked={this.props.shelf === "wantToRead"}
+                  defaultChecked={this.props.book.shelf === "wantToRead"}
                   onChange={this.handleRadioChange}
                 ></input>
                 <span className="checkbox-custom"></span>
@@ -82,7 +81,7 @@ class BackBookCard extends Component {
                   name="radio"
                   type="radio"
                   value="none"
-                  defaultChecked={this.props.shelf === "none"}
+                  defaultChecked={this.props.book.shelf === "none"}
                   onChange={this.handleRadioChange}
                 ></input>
                 <span className="checkbox-custom"></span>
@@ -94,7 +93,7 @@ class BackBookCard extends Component {
             <div className="FlexContainer">
               <img
                 className="Book-back-img"
-                src={this.props.bookImage}
+                src={this.props.book.imageLinks.thumbnail}
                 alt="Logo"
               />
             </div>

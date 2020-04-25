@@ -12,7 +12,7 @@ class FrontBookCard extends Component {
     e.preventDefault();
     this.setState((state) => {
       return { toggleMenu: (state.toggleMenu = false) };
-    });
+    }, this.props.update);
   };
 
   hamburgerMenuBtn = (e) => {
@@ -23,7 +23,7 @@ class FrontBookCard extends Component {
   };
 
   render() {
-    const { title, img, shelf } = this.props;
+    console.log(this.props)
     return (
       <div>
         <div className="Card-container-front">
@@ -31,21 +31,23 @@ class FrontBookCard extends Component {
             <div className="Card-container-front">
               <div className="Spine">
                 <SpineHamburgerMenu hamburgerMenuBtn={this.hamburgerMenuBtn} />
-                <p className="Book-title">{title}</p>
+                <p className="Book-title">{this.props.book.title}</p>
               </div>
               <div className="Book-Image_Container">
-                <img className="Book-front-img" src={img} alt="Logo" />
+                <img
+                  className="Book-front-img"
+                  src={this.props.book.imageLinks.thumbnail}
+                  alt="Logo"
+                />
               </div>
             </div>
           ) : (
             <React.Fragment>
               <BackBookCard
-                bookTitle={title}
-                bookImage={img}
                 exitListMenuHandler={this.exitListMenuHandler}
-                shelf={shelf}
                 book={this.props.book}
-                books={this.props}
+                update={this.props}
+        
               />
             </React.Fragment>
           )}

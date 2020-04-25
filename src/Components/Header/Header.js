@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "./../../images/SVG/logo.svg";
 import AddBook from "../AddBookBtn/AddBook";
 import "./Header.css";
+import { Link } from 'react-router-dom'
 
 const Header = (props) => {
   return (
@@ -11,7 +12,11 @@ const Header = (props) => {
         <h1 className="title">My Reads</h1>
       </div>
       <div>
-        <AddBook />
+      <Link
+        to='/search' 
+        >
+          <AddBook />
+        </Link>
       </div>
     </div>
   );
