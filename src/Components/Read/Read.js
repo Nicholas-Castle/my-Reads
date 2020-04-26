@@ -3,6 +3,9 @@ import FrontBookCard from "./../BookCardFront/FrontBookCard";
 import "./Read.css";
 
 const WantToRead = (props) => {
+  const updateBooks = () => {
+    props.update();
+  }
   return (
     <div className="Row-Container">
       <h1 className="heading">Read</h1>
@@ -13,13 +16,11 @@ const WantToRead = (props) => {
           })
           .map((book) => (
             <React.Fragment key={book.id}>
-              <FrontBookCard
-                title={book.title}
-                img={book.imageLinks.thumbnail}
-                shelf={book.shelf}
-                book={book}
-              />
-            </React.Fragment>
+            <FrontBookCard
+              book={book}
+              update={updateBooks}
+            />
+          </React.Fragment>
           ))}
       </div>
     </div>

@@ -20,7 +20,6 @@ class BackBookCard extends Component {
   updateShelf = () => {
     const shelf = this.state.bookStatus;
     API.update(this.props.book, shelf);
-    
   };
 
   render() {

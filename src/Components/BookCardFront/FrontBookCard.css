@@ -20,12 +20,13 @@
 }
 .Book-title {
   writing-mode: vertical-rl;
-  -webkit-text-orientation: mixed;
   text-orientation: mixed;
-  font-size: 19px;
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.01em;
+  height: 178px;
 }
+
 img.Book-front-img {
   width: 204px;
   height: 370px;

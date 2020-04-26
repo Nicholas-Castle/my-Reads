@@ -23,7 +23,6 @@ class FrontBookCard extends Component {
   };
 
   render() {
-    console.log(this.props)
     return (
       <div>
         <div className="Card-container-front">
@@ -36,7 +35,7 @@ class FrontBookCard extends Component {
               <div className="Book-Image_Container">
                 <img
                   className="Book-front-img"
-                  src={this.props.book.imageLinks.thumbnail}
+                  src={this.props.book.imageLinks.thumbnail === undefined ? this.props.book.imageLinks.thumbnail : null}
                   alt="Logo"
                 />
               </div>
@@ -46,8 +45,6 @@ class FrontBookCard extends Component {
               <BackBookCard
                 exitListMenuHandler={this.exitListMenuHandler}
                 book={this.props.book}
-                update={this.props}
-        
               />
             </React.Fragment>
           )}

@@ -3,13 +3,15 @@ import FrontBookCard from "./../BookCardFront/FrontBookCard";
 import "./WantToRead.css";
 
 const WantToRead = (props) => {
-  const { books, update} = props
+  const updateBooks = () => {
+    props.update();
+  }
  
   return (
     <div className="Row-Container">
       <h1 className="heading">Want to Read</h1>
       <div className="Want-to-read-container">
-        {books
+        {props.books
           .filter((book) => {
             return book.shelf === "wantToRead";
           })
@@ -17,7 +19,7 @@ const WantToRead = (props) => {
             <React.Fragment key={book.id}>
               <FrontBookCard
                 book={book}
-                update={props.update}
+                update={updateBooks}
               />
             </React.Fragment>
           ))}

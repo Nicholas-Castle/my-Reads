@@ -7,7 +7,6 @@ import BookList from "./Components/BookList/BookList";
 import { Route } from "react-router-dom";
 import * as API from "./util/BooksAPI";
 import "./App.css";
-import BackBookCard from "./Components/BookCardBack/BackBookCard";
 
 class App extends Component {
   state = {
@@ -26,12 +25,10 @@ class App extends Component {
         () => this.state.books
       )
     );
-  };
+  }
 
-/*   updateShelf = () => {
-    const shelf = this.state.bookStatus;
-    API.update(this.props.book, shelf)
-    .then((result) =>
+  onChangeShelf = () => {
+    API.getAll().then((result) =>
       this.setState(
         {
           books: result,
@@ -39,31 +36,8 @@ class App extends Component {
         },
         () => this.state.books
       )
-    )
-    .catch((err) => console.warn(err));
-  }; */
-
-  
-  onChangeShelf = () => {
-  let newBooks = API.getAll().then(result => result)
-   this.setState((prevState)=>{
-    return { books: prevState.books = newBooks }
-   }, () => this.state.books);
+    );
   };
-
-    componentDidUpdate(prevProps,prevState){
-      const newBooks = API.getAll().then((result) => result[0].title)
-      console.log(prevState)
-      console.log(newBooks)
-      if(newBooks !== this.state.books[0].title){
-        console.log(true)
-      }
-      
-      
-      
-    
-    }
-
 
   render() {
     return (
@@ -78,13 +52,20 @@ class App extends Component {
               </header>
               <div className="App-body">
                 <div>
-                  <WantToRead books={this.state.books} update={this.onChangeShelf}/>
+                  <WantToRead
+                    books={this.state.books}
+                    update={this.onChangeShelf}
+                  />
                 </div>
                 <div>
-                  <Reading books={this.state.books} />
+                  <Reading 
+                    books={this.state.books}
+                    update={this.onChangeShelf} />
                 </div>
                 <div>
-                  <Read books={this.state.books} />
+                  <Read 
+                    books={this.state.books}
+                    update={this.onChangeShelf} />
                 </div>
               </div>
             </div>
@@ -93,7 +74,7 @@ class App extends Component {
         <Route
           exact
           path="/search"
-          render={() => <BookList book={this.state.books} />}
+          render={() => <BookList book={this.state.books} update={this.onChangeShelf} />}
         />
       </div>
     );
