@@ -24,7 +24,7 @@
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.01em;
-  height: 178px;
+  height: 217px;
 }
 
 img.Book-front-img {
@@ -35,4 +35,9 @@ img.Book-front-img {
 }
 .Book-Image_Container {
   overflow: hidden;
+}
+
+p.Author {
+  font-size: 9px;
+  margin: 73px 4px 6px 4px;
 }

@@ -3,9 +3,8 @@ import "./BookList.css";
 import FrontBookCard from "./../BookCardFront/FrontBookCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { throttle, debounce } from 'throttle-debounce';
+import { throttle } from 'throttle-debounce';
 import * as API from "./../../util/BooksAPI";
-import { object } from "prop-types";
 
 class BookList extends Component {
   state = {
@@ -19,7 +18,7 @@ class BookList extends Component {
     this.props.update();
   };
 
-  clearSearch = () => {
+  clearSearch() {
     this.setState({
       books: [],
       searchInput: ''
@@ -27,16 +26,18 @@ class BookList extends Component {
   }
 
   getBooks = () => {
-    const specialChar = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/;
     let searchInput = this.state.searchInput;
-    console.log(this.state.books)
-    if(specialChar.test(searchInput) || !this.state.books) {
-      return null
-    }else if(searchInput !== ''){
+    if(searchInput !== ''){
       API.search(searchInput, 20).then(result => {
+        if(result.error !== "empty query") {
         this.setState({
           books: result
         })
+      } else {
+        this.setState((prevState) => ({
+          books: []
+         }))
+      }
       })
     }
     
@@ -44,8 +45,9 @@ class BookList extends Component {
 // let shelf = { shelf: "none" };
 
   onChangeSearchHandler = (event) => {
-    this.clearSearch()
+    
     let searchInput = event.target.value;
+   
     this.setState({
       searchInput: searchInput
      }, throttle(300,this.getBooks))

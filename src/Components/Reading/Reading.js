@@ -17,7 +17,7 @@ const Reading = (props) => {
           .map((book) => (
             <React.Fragment key={book.id}>
               <FrontBookCard
-                book={book}
+                book={!book.imageLinks ? Object.assign(book, {imageLinks: {thumbnail: ''}}) : book}
                 update={updateBooks}
               />
             </React.Fragment>

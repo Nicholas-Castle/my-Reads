@@ -31,6 +31,7 @@ class FrontBookCard extends Component {
               <div className="Spine">
                 <SpineHamburgerMenu hamburgerMenuBtn={this.hamburgerMenuBtn} />
                 <p className="Book-title">{this.props.book.title}</p>
+                <p className="Author">By: {this.props.book.authors}</p>
               </div>
               <div className="Book-Image_Container">
                 <img
