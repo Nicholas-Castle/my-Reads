@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { throttle, debounce } from 'throttle-debounce';
 import * as API from "./../../util/BooksAPI";
+import { object } from "prop-types";
 
 class BookList extends Component {
   state = {
@@ -35,7 +36,7 @@ class BookList extends Component {
       API.search(searchInput, 20).then(result => {
         this.setState({
           books: result
-        }, () => this.state.books)
+        })
       })
     }
     
@@ -76,7 +77,9 @@ class BookList extends Component {
           <div className="card-list">
           {this.state.searchInput.length > 0 && this.state.books !== null && this.state.books.map((book) => (
             <React.Fragment key={book.id}>
-              <FrontBookCard book={book} update={this.updateBooks} />
+              <FrontBookCard book={!book.imageLinks ? Object.assign(book, {imageLinks: {thumbnail: ''}}) : book
+              
+              } update={this.updateBooks} />
             </React.Fragment>
           ))}
         </div>
