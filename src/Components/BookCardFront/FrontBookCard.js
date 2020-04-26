@@ -35,7 +35,7 @@ class FrontBookCard extends Component {
               <div className="Book-Image_Container">
                 <img
                   className="Book-front-img"
-                  src={this.props.book.imageLinks.thumbnail === undefined ? this.props.book.imageLinks.thumbnail : null}
+                  src={this.props.book.imageLinks.thumbnail}
                   alt="Logo"
                 />
               </div>
