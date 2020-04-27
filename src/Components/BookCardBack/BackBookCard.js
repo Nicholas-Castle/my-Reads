@@ -10,6 +10,7 @@ class BackBookCard extends Component {
   };
 
   handleRadioChange = (e) => {
+    // Set the books shelf status based on which radio button is clicked
     this.setState(
       {
         bookStatus: e.target.value,
@@ -19,12 +20,12 @@ class BackBookCard extends Component {
   };
 
   updateShelf = () => {
+    // Updates the API based on the new book Shelf
     const shelf = this.state.bookStatus;
     API.update(this.props.book, shelf);
   };
 
   render() {
-    console.log(this.props)
     return (
       <div>
         <div className="Card-container-back">
@@ -32,9 +33,12 @@ class BackBookCard extends Component {
           <div className="Fly-out">
             <div className="List-content-wrapper">
               <p className="Book-title-back">
-                {this.props.book.title.length > 14
-                  ? this.props.book.title.slice(0, 10) + "..."
-                  : this.props.book.title}
+                {
+                  // Checks The lenght of the book title and adds the dots to the end
+                  this.props.book.title.length > 14
+                    ? this.props.book.title.slice(0, 10) + "..."
+                    : this.props.book.title
+                }
               </p>
               <h3 className="list-heading">Move to...</h3>
               <br />

@@ -18,6 +18,7 @@ class BookList extends Component {
   };
 
   clearSearch() {
+    // Clears  state
     this.setState({
       books: [],
       searchInput: "",
@@ -25,6 +26,10 @@ class BookList extends Component {
   }
 
   getBooks = () => {
+    // Get searched books and
+    // checks for errors if the input is empty
+    // has special chars or mispellings
+    // then sets state with results
     let searchInput = this.state.searchInput;
     if (searchInput !== "") {
       API.search(searchInput, 20).then((result) => {
@@ -40,11 +45,12 @@ class BookList extends Component {
       });
     }
   };
-  // let shelf = { shelf: "none" };
+  
 
   onChangeSearchHandler = (event) => {
     let searchInput = event.target.value;
-
+    // Throttles typing input so we dont get a 
+    // undefined result
     this.setState(
       {
         searchInput: searchInput,
@@ -53,23 +59,32 @@ class BookList extends Component {
     );
   };
 
+  assignShelf = () => {
+    // Checks each book if it has a shelf
+    // if not it assigns a chel to the book
+    // if the books that are on a shelf id matches
+    // the the searched for books assign previous shelf
+    // to the search results
+    this.state.books.forEach((book) => {
+      if (!book.shelf) {
+        Object.assign(book, {
+          shelf: "none",
+        });
+      }
+      this.props.booksOnShelf.forEach((element) => {
+        if (element.id === book.id) {
+          Object.assign(book, {
+            shelf: element.shelf,
+          });
+        }
+      });
+    })
+  }
+
   render() {
     return (
       <div>
-        {this.state.books.forEach((book) => {
-          if (!book.shelf) {
-            Object.assign(book, {
-              shelf: "none",
-            });
-          }
-          this.props.booksOnShelf.forEach((element) => {
-            if (element.id === book.id) {
-              Object.assign(book, {
-                shelf: element.shelf,
-              });
-            }
-          });
-        })}
+        {this.assignShelf()}
         <div className="Search-container">
           <form className="Search-form">
             <Link to="/">
@@ -95,6 +110,9 @@ class BookList extends Component {
                 <React.Fragment key={book.id}>
                   <FrontBookCard
                     book={
+                      // Checks if the book has an image then 
+                      // assigns an object to the book with an empty image string
+                      // eles it returns the book object
                       !book.imageLinks
                         ? Object.assign(book, {
                             imageLinks: { thumbnail: "" },

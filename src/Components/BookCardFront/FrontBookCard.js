@@ -9,6 +9,8 @@ class FrontBookCard extends Component {
   };
 
   exitListMenuHandler = (e) => {
+    // Updates the home page with newly selected books
+    // and closes closes menu
     e.preventDefault();
     this.setState((state) => {
       return { toggleMenu: (state.toggleMenu = false) };
@@ -16,6 +18,7 @@ class FrontBookCard extends Component {
   };
 
   hamburgerMenuBtn = (e) => {
+    // Opens menu to select new shelfs
     e.preventDefault();
     this.setState((state) => {
       return { toggleMenu: (state.toggleMenu = true) };
@@ -26,29 +29,36 @@ class FrontBookCard extends Component {
     return (
       <div>
         <div className="Card-container-front">
-          {this.state.toggleMenu === false ? (
-            <div className="Card-container-front">
-              <div className="Spine">
-                <SpineHamburgerMenu hamburgerMenuBtn={this.hamburgerMenuBtn} />
-                <p className="Book-title">{this.props.book.title}</p>
-                <p className="Author">By: {this.props.book.authors}</p>
+          {
+            // Toggles the front and back cards when clicking on the hamburger menu
+            // and exit button. Also when clicking on the exit button on the back card
+            // the exit button updates the home page with the newly selected books
+            this.state.toggleMenu === false ? (
+              <div className="Card-container-front">
+                <div className="Spine">
+                  <SpineHamburgerMenu
+                    hamburgerMenuBtn={this.hamburgerMenuBtn}
+                  />
+                  <p className="Book-title">{this.props.book.title}</p>
+                  <p className="Author">By: {this.props.book.authors}</p>
+                </div>
+                <div className="Book-Image_Container">
+                  <img
+                    className="Book-front-img"
+                    src={this.props.book.imageLinks.thumbnail}
+                    alt="Logo"
+                  />
+                </div>
               </div>
-              <div className="Book-Image_Container">
-                <img
-                  className="Book-front-img"
-                  src={this.props.book.imageLinks.thumbnail}
-                  alt="Logo"
+            ) : (
+              <React.Fragment>
+                <BackBookCard
+                  exitListMenuHandler={this.exitListMenuHandler}
+                  book={this.props.book}
                 />
-              </div>
-            </div>
-          ) : (
-            <React.Fragment>
-              <BackBookCard
-                exitListMenuHandler={this.exitListMenuHandler}
-                book={this.props.book}
-              />
-            </React.Fragment>
-          )}
+              </React.Fragment>
+            )
+          }
         </div>
         <br />
       </div>
