@@ -6,11 +6,15 @@ const Reading = (props) => {
   const updateBooks = () => {
     props.update();
   }
+  
   return (
     <div className="Row-Container">
       <h1 className="heading">Currently Reading</h1>
       <div className="currently-reading-container">
-        {props.books
+        {
+          // Filters books by currentlyReading and displays them on the shelf
+          // Also adds an empty thumbnail to books that are missing an image
+          props.books
           .filter((book) => {
             return book.shelf === "currentlyReading";
           })

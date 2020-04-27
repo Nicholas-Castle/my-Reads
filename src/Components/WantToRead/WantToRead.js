@@ -11,7 +11,10 @@ const WantToRead = (props) => {
     <div className="Row-Container">
       <h1 className="heading">Want to Read</h1>
       <div className="Want-to-read-container">
-        {props.books
+        {
+          // Filters books by wantToRead and displays them on the shelf
+          // Also adds an empty thumbnail to books that are missing an image
+          props.books
           .filter((book) => {
             return book.shelf === "wantToRead";
           })
