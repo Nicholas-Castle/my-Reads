@@ -5,9 +5,9 @@
   width: 100vw;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  border-bottom: 1px solid #dcdcdc;
+  border-bottom: 2px solid #dcdcdc;
 }
 .card-list {
   width: 66vw;
@@ -17,8 +17,33 @@
   grid-gap: 20px;
 }
 
+.Search-form {
+  width: 95%;
+  display: flex;
+  align-items: center;
+}
+
+input[type="search"]::placeholder {  
+  color: #dcdcdc;
+} 
+
 input[type="search"] {
-  /* border: none; */
-  height: 89px;
-  width: 83%;
+
+    border: none; 
+    height: 89px;
+    width: 94%;
+    font-size: 27px;
+    display: inline-flex;
+    text-align: right; 
+ 
+}
+svg.svg-inline--fa.fa-arrow-left.fa-w-14 {
+  font-size: 50px;
+  cursor: pointer;
+  color: #0F4C81;
+}
+
+svg.svg-inline--fa.fa-search.fa-w-16 {
+  font-size: 40px;
+  color: #0F4C81;
 }

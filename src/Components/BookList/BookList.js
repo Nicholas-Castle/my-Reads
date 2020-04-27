@@ -3,17 +3,16 @@ import "./BookList.css";
 import FrontBookCard from "./../BookCardFront/FrontBookCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { throttle } from 'throttle-debounce';
+import { throttle } from "throttle-debounce";
+import { Link } from "react-router-dom";
 import * as API from "./../../util/BooksAPI";
 
 class BookList extends Component {
   state = {
     books: [],
     searchInput: "",
-    
   };
-  
- 
+
   updateBooks = () => {
     this.props.update();
   };
@@ -21,50 +20,64 @@ class BookList extends Component {
   clearSearch() {
     this.setState({
       books: [],
-      searchInput: ''
-     })
+      searchInput: "",
+    });
   }
 
   getBooks = () => {
     let searchInput = this.state.searchInput;
-    if(searchInput !== ''){
-      API.search(searchInput, 20).then(result => {
-        if(result.error !== "empty query") {
-        this.setState({
-          books: result
-        })
-      } else {
-        this.setState((prevState) => ({
-          books: []
-         }))
-      }
-      })
+    if (searchInput !== "") {
+      API.search(searchInput, 20).then((result) => {
+        if (result.error !== "empty query") {
+          this.setState({
+            books: result,
+          });
+        } else {
+          this.setState((prevState) => ({
+            books: [],
+          }));
+        }
+      });
     }
-    
-  }
-// let shelf = { shelf: "none" };
+  };
+  // let shelf = { shelf: "none" };
 
   onChangeSearchHandler = (event) => {
-    
     let searchInput = event.target.value;
-   
-    this.setState({
-      searchInput: searchInput
-     }, throttle(300,this.getBooks))
-     
 
-  }
-  
-   
+    this.setState(
+      {
+        searchInput: searchInput,
+      },
+      throttle(300, this.getBooks)
+    );
+  };
 
   render() {
     return (
       <div>
+        {this.state.books.forEach((book) => {
+          if (!book.shelf) {
+            Object.assign(book, {
+              shelf: "none",
+            });
+          }
+          this.props.booksOnShelf.forEach((element) => {
+            if (element.id === book.id) {
+              Object.assign(book, {
+                shelf: element.shelf,
+              });
+            }
+          });
+        })}
         <div className="Search-container">
-          <form>
-            <button>
-              <FontAwesomeIcon icon={faArrowLeft} />
-            </button>
+          <form className="Search-form">
+            <Link to="/">
+              <button>
+                <FontAwesomeIcon icon={faArrowLeft} />
+              </button>
+            </Link>
+
             <input
               type="search"
               placeholder="Search Books"
@@ -75,18 +88,24 @@ class BookList extends Component {
             <FontAwesomeIcon icon={faSearch} />
           </form>
         </div>
-        <div>{this.state.searchInput.length > 0 &&
+        <div>
           <div className="card-list">
-          {this.state.searchInput.length > 0 && this.state.books !== null && this.state.books.map((book) => (
-            <React.Fragment key={book.id}>
-              <FrontBookCard book={!book.imageLinks ? Object.assign(book, {imageLinks: {thumbnail: ''}}) : book
-              
-              } update={this.updateBooks} />
-            </React.Fragment>
-          ))}
-        </div>
-        }
-         
+            {this.state.books !== null &&
+              this.state.books.map((book) => (
+                <React.Fragment key={book.id}>
+                  <FrontBookCard
+                    book={
+                      !book.imageLinks
+                        ? Object.assign(book, {
+                            imageLinks: { thumbnail: "" },
+                          })
+                        : book
+                    }
+                    update={this.updateBooks}
+                  />
+                </React.Fragment>
+              ))}
+          </div>
         </div>
       </div>
     );

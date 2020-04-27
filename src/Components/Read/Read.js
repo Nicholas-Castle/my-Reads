@@ -20,9 +20,12 @@ const WantToRead = (props) => {
               book={!book.imageLinks ? Object.assign(book, {imageLinks: {thumbnail: ''}}) : book}
               update={updateBooks}
             />
+            
           </React.Fragment>
           ))}
+          
       </div>
+      <br></br>
     </div>
   );
 };

@@ -50,6 +50,7 @@ class FrontBookCard extends Component {
             </React.Fragment>
           )}
         </div>
+        <br />
       </div>
     );
   }

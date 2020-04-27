@@ -1,10 +1,11 @@
 .read-container {
   display: inline-flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   width: 90%;
   height: 380px;
   justify-content: flex-start;
+
 }
 
 .Row-Container {

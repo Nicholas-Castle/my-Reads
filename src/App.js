@@ -17,25 +17,19 @@ class App extends Component {
 
   componentDidMount() {
     API.getAll().then((result) =>
-      this.setState(
-        {
-          books: result,
-          isLoaded: true,
-        },
-        () => this.state.books
-      )
+      this.setState({
+        books: result,
+        isLoaded: true,
+      })
     );
   }
 
   onChangeShelf = () => {
     API.getAll().then((result) =>
-      this.setState(
-        {
-          books: result,
-          isLoaded: true,
-        },
-        () => this.state.books
-      )
+      this.setState({
+        books: result,
+        isLoaded: true,
+      })
     );
   };
 
@@ -58,23 +52,28 @@ class App extends Component {
                   />
                 </div>
                 <div>
-                  <Reading 
+                  <Reading
                     books={this.state.books}
-                    update={this.onChangeShelf} />
+                    update={this.onChangeShelf}
+                  />
                 </div>
                 <div>
-                  <Read 
-                    books={this.state.books}
-                    update={this.onChangeShelf} />
+                  <Read books={this.state.books} update={this.onChangeShelf} />
                 </div>
               </div>
-            </div>
+              <footer className="footer"></footer>
+              </div>
           )}
         />
         <Route
           exact
           path="/search"
-          render={() => <BookList book={this.state.books} update={this.onChangeShelf} />}
+          render={() => (
+            <BookList
+              booksOnShelf={this.state.books}
+              update={this.onChangeShelf}
+            />
+          )}
         />
       </div>
     );
