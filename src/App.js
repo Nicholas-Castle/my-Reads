@@ -16,6 +16,7 @@ class App extends Component {
   };
 
   componentDidMount() {
+    // Calls API to get all books on shelfs
     API.getAll().then((result) =>
       this.setState({
         books: result,
@@ -25,6 +26,7 @@ class App extends Component {
   }
 
   onChangeShelf = () => {
+    // Updates home page based on the the books shelf change
     API.getAll().then((result) =>
       this.setState({
         books: result,
