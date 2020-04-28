@@ -1,3 +1,12 @@
+# My Reads Book Organizer
+
+My Reads is a simple book organizer, that lets you search for books, and place books on
+three different shelfs. Those shelfs are current reading, read, and want to read. You can also select none to remove a book from your shelf.  
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development purposes. 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -66,3 +75,20 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+## Built With
+
+* [React](https://reactjs.org/) - The web framework used
+* [Create React App](https://github.com/facebook/create-react-app) - React package installer
+
+## Authors
+
+* **Nick Castle** - *Initial work* - [my-reads](https://github.com/Nicholas-Castle/my-reads)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Thank you Udacity for providing a fun project idea
