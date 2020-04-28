@@ -1,0 +1,22 @@
+.shelf-select-btn-container {
+  width: 0px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1;
+  margin: 10px 0 0 13px;
+}
+p.shelf-select-btn {
+  font-weight: 700;
+  margin: 0px 0px 0px 0px;
+  font-size: 16px;
+  color: #fff;
+}
+button.submit-btn {
+  cursor: pointer;
+  background: #0F4C81;
+  width: 95px;
+  height: 33px;
+  margin: 20px 0px 0 -31px;
+  border-radius: 4px;
+}

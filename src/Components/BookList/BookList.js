@@ -19,10 +19,10 @@ class BookList extends Component {
 
   clearSearch() {
     // Clears  state
-    this.setState({
-      books: [],
-      searchInput: "",
-    });
+      this.setState({
+        books: [],
+        searchInput: "",
+      });
   }
 
   getBooks = () => {
@@ -31,6 +31,9 @@ class BookList extends Component {
     // has special chars or mispellings
     // then sets state with results
     let searchInput = this.state.searchInput;
+    if (!searchInput) {
+      this.clearSearch();
+    }
     if (searchInput !== "") {
       API.search(searchInput, 20).then((result) => {
         if (result.error !== "empty query") {

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./BackBookCard.css";
 import ExitMenuBtn from "./../ExitMenuBtn/ExitMenuBtn";
+import ShelfSelectBtn from "../ShelfSelectBtn/ShelfSelectBtn";
 
 import * as API from "./../../util/BooksAPI";
 
@@ -30,14 +31,16 @@ class BackBookCard extends Component {
       <div>
         <div className="Card-container-back">
           <ExitMenuBtn exitMenu={this.props.exitListMenuHandler} />
+    
+    
           <div className="Fly-out">
             <div className="List-content-wrapper">
               <p className="Book-title-back">
                 {
                   // Checks The lenght of the book title and adds the dots to the end
                   this.props.book.title.length > 14
-                    ? this.props.book.title.slice(0, 10) + "..."
-                    : this.props.book.title
+                  ? this.props.book.title.slice(0, 10) + "..."
+                  : this.props.book.title
                 }
               </p>
               <h3 className="list-heading">Move to...</h3>
@@ -91,8 +94,15 @@ class BackBookCard extends Component {
                 <span className="checkbox-custom"></span>
                 None
               </label>
+              {
+                this.state.bookStatus 
+                ? <ShelfSelectBtn exitMenu={this.props.exitListMenuHandler} />
+                : null
+              }
             </form>
+           
           </div>
+    
           <div className="Book-Image_Container">
             <div className="FlexContainer">
               <img
@@ -102,6 +112,7 @@ class BackBookCard extends Component {
               />
             </div>
           </div>
+         
         </div>
       </div>
     );

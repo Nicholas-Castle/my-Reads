@@ -15,14 +15,10 @@ class App extends Component {
     error: null,
   };
 
-  componentDidMount() {
+   async componentDidMount() {
     // Calls API to get all books on shelfs
-    API.getAll().then((result) =>
-      this.setState({
-        books: result,
-        isLoaded: true,
-      })
-    );
+    const books = await API.getAll()
+      this.setState({ books })
   }
 
   onChangeShelf = () => {
