@@ -3,7 +3,7 @@
 My Reads is a simple book organizer, that lets you search for books, and place books on
 three different shelfs. Those shelfs are current reading, read, and want to read. You can also select none to remove a book from your shelf.  
 
-![](src\images\myreads.gif)
+![](https://media.giphy.com/media/lMyWP2blH9gupRIIE8/giphy.gif)
 
 ## Getting Started
 
