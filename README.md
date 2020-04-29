@@ -3,11 +3,23 @@
 My Reads is a simple book organizer, that lets you search for books, and place books on
 three different shelfs. Those shelfs are current reading, read, and want to read. You can also select none to remove a book from your shelf.  
 
+![](src\images\myreads.gif)
+
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development purposes. 
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+You can either clone or download the files. To download click the green **clone or download** button on the top right of the page.
+Open the command line or favorite IDE then follow the instructions below.
+```
+cd my-reads
+npm install
+```
+To clone the repository with HTTPS click the green **clone or download** button then then copy the URL.
+Open the command line or favorite IDE then follow the instructions below.
+```
+$ git clone https://github.com/Nicholas-Castle/my-reads.git
+cd my-reads
+npm install
+```
 
 ## Available Scripts
 
@@ -83,7 +95,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 ## Authors
 
-* **Nick Castle** - *Initial work* - [my-reads](https://github.com/Nicholas-Castle/my-reads)
+* **Nick Castle** - [my-reads](https://github.com/Nicholas-Castle/my-reads)
 
 ## License
 
