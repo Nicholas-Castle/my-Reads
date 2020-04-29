@@ -31,7 +31,7 @@ class BookList extends Component {
     // has special chars or mispellings
     // then sets state with results
     let searchInput = this.state.searchInput;
-    if (!searchInput) {
+    if (!searchInput || searchInput === '') {
       this.clearSearch();
     }
     if (searchInput !== "") {
@@ -107,6 +107,7 @@ class BookList extends Component {
           </form>
         </div>
         <div>
+        { this.state.searchInput !== '' ?
           <div className="card-list">
             {this.state.books !== null &&
               this.state.books.map((book) => (
@@ -127,7 +128,7 @@ class BookList extends Component {
                 </React.Fragment>
               ))}
           </div>
-        </div>
+        :null}</div>
       </div>
     );
   }
